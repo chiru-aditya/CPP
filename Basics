@@ -100,4 +100,40 @@ FORWARD LIST (Single Linked List)
 
 2.CONTAINER ADOPTERS
 ------------------------------
+queue
+priority set
+stack
+==========
+STACK (LIFO)
+-----
+pop()
+push()
+top()
+st.empty() --tells true if empty else false
+stack<int>s; //declare a container
+st.push(number)
+st.pop() //top will be removed
+st.size()//gives the size of stack
+st.empty() //checks stack is empty or not
+
+
+QUEUE (FIFO)
+-----
+queue<int>q;
+q.push(10)
+q.push(20)
+q.push(30)
+q.pop()//removes front element
+q.front()
+
+PRIORITY QUEUE
+--------------
+priority_queue<int>a;
+a.push(10)
+a.push(20)
+a.push(5)
+cout<<a.top(); // 20 //max heap
+pop()
+==to get min heap(-1*values and call 1*top)
+priority_queue<int>,vector <int> , greater<int>>pq;//min heap syntax
 
