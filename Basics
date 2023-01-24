@@ -60,6 +60,11 @@ STL LIBRARY
 ==============================================================================================
 1.SEQUENTIAL CONTAINER
 --------------------------------
+//ADD 
+a.push_back(i);
+a.emplace_back(i):
+a.insert(a.begin()+1,100);
+
 
 VECTOR
 ======
@@ -71,6 +76,7 @@ VECTOR
 ==sort(A.begin(),A.end());
 ==auto i =A.rbegin();==> last element
 
+
 LIST(doubly linked list)
 ==============
 list<int>b;
@@ -78,6 +84,7 @@ list<int>b;
 ==push_back(i)
 ==pop_front(i)
 ==push_back(i)
+
 
 DEQUE
 =====
@@ -89,14 +96,17 @@ pop_back
 d.back();//last element
 d.front();//front element
 
+
 ARRAY
 =====
 #include<array>
 array<int,size>name={data};
 arr.empty();
 
+
 FORWARD LIST (Single Linked List)
 ======================
+
 
 2.CONTAINER ADOPTERS
 ------------------------------
@@ -117,6 +127,7 @@ st.size()//gives the size of stack
 st.empty() //checks stack is empty or not
 
 
+
 QUEUE (FIFO)
 -----
 queue<int>q;
@@ -125,6 +136,7 @@ q.push(20)
 q.push(30)
 q.pop()//removes front element
 q.front()
+
 
 PRIORITY QUEUE
 --------------
@@ -136,4 +148,316 @@ cout<<a.top(); // 20 //max heap
 pop()
 ==to get min heap(-1*values and call 1*top)
 priority_queue<int>,vector <int> , greater<int>>pq;//min heap syntax
+top()
+
+PAIR
+----
+pair<int,int>MP 
+to place pair in priority queue
+priority_queue<pair<int,int>>pq;
+
+
+
+ASSOCIATIVE CONTAINERS
+----------------------
+implement sorted data structure that can be quickly searched(o(log(n))
+set 
+multiset
+map (key based sorted order)log(n)
+multimap
+
+
+
+SET
+-----
+set<int>a;
+a.insert(i)
+a.emplace(i)
+//begin(),end(),rbegin(),rend(),size(),empty(),and swap() are same
+auto a.find(3);//to check if element is present
+cout<<*(it);
+auto it =a.find(i);// if element is not present goes to last+1 address
+se.erase(i);
+se.count(i);
+
+MULTISET //it can store duplicates
+-------
+multiset<int>ms;
+ms.insert(i);
+ms.erase(i);
+ms.erase(ms.find(i));//it erases first i in the set
+ms.count(i);
+ms.erase(ms.find(1),ms.find(1)+2;// to erase elements in range
+
+MAP
+---
+map<int,int>mp;
+map<int,pair<int,int>>dic1;
+map<pair<int,int>int>dic2; //for many keys same value
+dic.insert(i);
+dic.emplace(i);
+dic[1]=2;
+dic[{2,3}]=10;
+for(auto it: dic){
+cout<<it.first<<" "<<it.second;
+
+map stores data in sorting order based on key values(sorted keys )
+auto it= dic.find(i)// 
+
+
+UNORDERED ASSOCIATIVE CONTAINERS
+===============================
+unordered set
+unordered multiset
+unordered map
+unordered multimap
+
+
+PAIRS
+-----
+#include<iostream>
+#include<utility>
+using namespace std;
+int main()
+{
+    //pair dicleration
+    pair<int,char>p={1,'h'};
+    cout<<p.first<<" "<<p.second<<endl;
+
+    //pair in pair
+    pair<int, pair<int,int>>p1={1,{2,3}};
+
+    cout<<p1.first<<" "<<p1.second.first<<endl;
+
+    //pair with array
+    pair<int,int>arr[]={{1,2},{3,4}};
+    cout<<arr[0].first<<endl;
+    //make_pair
+    pair<char,int>pa=make_pair('A',2);
+    cout<<pa.second;
+    return 0;
+}
+
+VECTORS
+-------
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+    vector<int>vet={10,20,30,40};
+    vector<int>::iterator it=vet.begin();//it refers to address of that point
+    // so if you want value at that point use *
+    cout<<*(it)<<endl;
+    //it++;
+    it=it+2;
+    cout<<*(it);
+
+    vector<int>::iterator it=vet.end();//it point the address of end-1
+    vector<int>::iterator it=v.rend();//it point the address of second position that means 20 address
+    vector<int>::iterator it.rbegin();//it point the address of last value
+
+    cout<<vet[0]<<" "<<vet.at(0)<<endl;//to access the values in vector
+    cout<<vet.back()<<endl;//access the last value
+
+    //ways to print the vector
+    for(vector<int>::iterator it=vet.begin();it!=vet.end();it++)
+    {
+        cout<<*(it)<<" ";
+    }
+    cout<<endl;
+    for(auto it=vet.begin();it!=vet.end();it++)
+    {
+        cout<<*(it)<<" ";
+    }
+    cout<<endl;
+    for(auto it:vet)
+    {
+        cout<<it<<" ";
+    }
+    //erase function
+    vet.erase(vet.begin());//it erase the first value
+    vet.erase(vet.begin()+1);//it erase second value
+    //what if you want erase range of elements
+    //{10,20,30,40,50}
+    vet.erase(vet.begin()+1,vet.begin()+4);//{10,50}
+    //insert function in vector
+    vet.insert(vet.begin(),300);//300 will be inserted at the begining
+    vet.insert(vet.begin()+1,2,10)//now two 10's will be inserted from second
+    vector<int>copy(2,10);//{10,10}
+    vet.insert(vet.begin(),copy.begin(),copy.end());
+    //to erase the last element
+    vet.pop_back();
+    //v1={1,2}
+    //v2={4,5}
+    v1.swap(v2);//v1={4,5} v2={1,2}
+    vet.clear();//to erase all the values
+    cout<<vet.empty();//gives true if vector is empty
+
+
+
+}
+
+vector<int>arr;
+    arr.push_back(1);//{1}
+    arr.emplace_back(2);//{1,2}
+    cout<<arr[1]<<endl;
+    //2D vector
+    vector<vector<int>>mat={{1,2,3},{4,5,6},{7,8,9}};
+    for(int i=0;i<mat.size();i++)
+    {
+        for(int j=0;j<mat[i].size();j++)
+        {
+            cout<mat[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    //vector with pair elemts
+    vector<pair<int,int>>ve;
+    ve.push_back({4,5});//{{4,5}}
+    ve.emplace_back(7,8);//{{4,5},{7,8}}
+    //vector of size 5
+    //every one as 100
+    vector<int>vat(5,100);//{100,100,100,100,100}
+    vector<int>vat(5);//{0,0,0,0,0}
+    vector<int>vat(5,13);
+    //copy one vector into another
+    vector<int>vet1(vet);//vet1={13,13,13,13,13}
+
+    return 0;
+
+LIST
+-----
+#include<iostream>
+#include<list>
+#include<iterator>>
+int main()
+{
+    list<int>lis;
+    //append the element
+    lis.push_back(1);//{1}
+    lis.emplace_back(2);//{2}
+    //what if you want push at front
+    lis.push_front(5);//{5,1,2}
+    list.emplace_front();
+}
+
+MAP
+---
+
+
+#include<iostream>
+#include<iterator>
+#include<map>
+using namespace std;
+int main()
+{
+    map<int,int>dic;//key:value pair
+    //stores data in sorted , sorted will be on keys
+    map<int,pair<int,int>>dic1;//one key may have set of pairs
+    map<pair<int,int>,int>dic2;//set of keys may have one value
+    dic[1]=2;//dic={{1,2}}
+    dic.emplace({3,1});
+    dic.insert({2,4});
+    {{1,2},
+     {2,4},
+     {3,1}
+    }
+    for(auto it:dic)
+    {
+        cout<<it.first<<" "<<it.second;
+    }
+    dic2[{2,3}]=10;//set of keys have one value
+    cout<<dic[2];//prints 4
+    cout<<dic[5];//gives 0 as it is not preasent
+
+    auto it=dic.find(3);//gives the position where 3 is found
+    auto it=dic.find(5);//position to the end as 5 is not present
+    //lower and upper bound works
+    auto it=dic.lower_bound(3);
+    auto it=dic.upper_bound(5);
+    //erase swap begin end size will works
+    //we have multi map which allowes you to store same key and value
+    //pair for multiple times
+    //unordered_map
+
+
+
+
+}
+
+SET
+===
+
+#include<iostream>
+#include<set>
+#include<iterator>
+using namespace std;
+int main()
+{
+    //set arrange them in ascending order , no duplicate will be taken
+    std::set<int>se;
+    se.insert(1);//{1}
+    se.insert(2);//{1,2}
+    se.insert(4);//{1,2,4}
+    se.emplace(3);//{1,2,3,4}
+    //begin(),end(),rbegin(),rend(),size(),empty(), and swap() are same
+    auto it=se.find(3);//to check if element is present
+    cout<<*(it);
+    auto it=se.find(6);//if element is not present goes to last+1 address
+    //how to erase
+    se.erase(5)//erase 5 {1,2,3,4}
+    auto it=se.find(4);
+    se.erase(it);//it removes the position and value at that particular address
+    auto it1=se.find(2);
+    auto it2=se.find(4);
+    se.erase(it1,it2);//erase in the given range from first to last-1 --> from it1 to it2-1 it erases 
+    //count
+    int c=se.count(1);//if it present count is 1 else 0
+
+}
+
+
+UNORDERED SET
+=============
+
+
+#include<iostream>
+#include<set>
+using namespace std;
+int main()
+{
+    unordered_set<int>us;//does't store duplicates and they are
+    //in unsorted
+    //it does not store in any particular order
+    //it has a better time complexity
+    //but in case of collusions gives wrong answer
+
+}
+
+MULTISET
+=======
+#include<iostream>
+#include<set>
+using namespace std;
+int main()
+{
+    multiset<int>ms;//it can store duplicates
+    ms.insert(1);
+    ms.insert(2);
+    ms.insert(1);
+    ms.erase(1);//it erases all ones present in set
+    ms.erase(ms.find(1));//it erases the fist one in the set
+    for(auto it:ms){
+        cout<<it<<" ";
+    }
+    ms.count(1);//give the count of ones in set
+    //what if you want erase two ones
+    ms.erase(ms.find(1),ms.find(1)+2);
+}
+
+
+
+
 
